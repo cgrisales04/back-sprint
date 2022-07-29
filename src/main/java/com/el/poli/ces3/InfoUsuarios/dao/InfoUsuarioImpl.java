@@ -15,6 +15,19 @@ public class InfoUsuarioImpl implements InfoUsuariosDAO{
     private EntityManager entityManager;
 
     @Override
+    public List<InfoUsuarios> getUsuarios() {
+        //Envio de nombre del Modelo
+        String query = "FROM InfoUsuarios";
+        return entityManager.createQuery(query).getResultList();
+    }
+
+    @Override
+    public InfoUsuarios getInfoUsuario(int id){
+        return entityManager.find(InfoUsuarios.class, id);
+    }
+
+    
+    @Override
     public InfoUsuarios createInfoUsuario(InfoUsuarios info_usuario){
         return entityManager.merge(info_usuario);
     }

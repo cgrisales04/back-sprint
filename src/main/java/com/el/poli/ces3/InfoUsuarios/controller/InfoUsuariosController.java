@@ -17,6 +17,15 @@ public class InfoUsuariosController {
         return "Hola Spring";
     }
 
+    @RequestMapping(value = "api/usuarios", method = RequestMethod.GET)
+    public List<InfoUsuarios>getInfoUsuarios(){
+        return info_usuario_dao.getUsuarios();
+    }
+
+    @RequestMapping(value = "api/usuarios/{id}", method = RequestMethod.GET)
+    public InfoUsuarios getInfoUsuario(@PathVariable("id") int id){
+        return info_usuario_dao.getInfoUsuario(id);
+    }
     @RequestMapping(value = "api/usuarios", method = RequestMethod.POST)
     public InfoUsuarios createInfoUsuario(@RequestBody InfoUsuarios e){
         return info_usuario_dao.createInfoUsuario(e);
